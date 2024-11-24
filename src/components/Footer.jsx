@@ -1,9 +1,9 @@
 import React from "react";
-import { GitHub, Linkedin, Globe } from "lucide-react";
+import { Github, Linkedin, Globe } from "lucide-react"; 
 
 const Footer = () => {
   return (
-    <footer className="bg-accent border-t border-secondary/20">
+    <footer className="bg-accent border-t border-secondary/20 fixed bottom-0 w-full ">
       <div className="container mx-auto px-4 py-6">
         <div className="flex flex-col md:flex-row items-center justify-between">
           {/* Left Section: Copyright */}
@@ -21,7 +21,7 @@ const Footer = () => {
               aria-label="GitHub"
               className="text-gray-300 hover:text-secondary transition-colors"
             >
-              <GitHub className="h-6 w-6" />
+              <Github className="h-6 w-6" />
             </a>
 
             {/* Website */}
@@ -37,7 +37,7 @@ const Footer = () => {
 
             {/* LinkedIn */}
             <a
-              href="https://www.linkedin.com/in/yanis-sebastian-zuercher"
+              href="https://www.linkedin.com/in/yanis-sebastian-zürcher"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="LinkedIn"
