@@ -15,8 +15,8 @@ const Contact = () => {
       <Navigation />
       <div className="container py-12">
         <header className="text-center mb-16">
-          <h1 className="text-4xl font-bold mb-4">Contact Us</h1>
-          <p className="text-xl text-gray-400">Get in touch with our team</p>
+          <h1 className="text-4xl font-bold mb-4">Contact Me</h1>
+          <p className="text-xl text-gray-400">Get in touch with our me</p>
         </header>
 
         <div className="max-w-md mx-auto">

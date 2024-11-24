@@ -80,16 +80,9 @@ export const exercises = [
           description: "Detailed guide on social media investigation techniques"
         }
       ],
-      submission: {
-        format: "PDF report",
-        requirements: [
-          "Documentation of all discovered accounts",
-          "Timeline visualization",
-          "Connection map",
-          "Analysis of findings",
-          "Tools and methods used"
-        ]
-      }
     }
   }
+
+// , for more projects.
+
 ];
