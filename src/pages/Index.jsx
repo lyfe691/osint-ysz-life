@@ -1,5 +1,6 @@
 import { useState } from "react";
 import ExerciseCard from "@/components/ExerciseCard";
+import Navigation from "@/components/Navigation";
 
 const SAMPLE_EXERCISES = [
   {
@@ -35,16 +36,17 @@ const Index = () => {
   const [exercises] = useState(SAMPLE_EXERCISES);
 
   return (
-    <div className="min-h-screen matrix-bg">
-      <div className="container py-8">
-        <header className="text-center mb-12">
+    <div className="min-h-screen bg-primary">
+      <Navigation />
+      <div className="container py-12">
+        <header className="text-center mb-16">
           <h1 className="text-4xl font-bold mb-4">OSINT Training Ground</h1>
           <p className="text-xl text-gray-400">Master the art of Open Source Intelligence</p>
         </header>
 
-        <section className="mb-12">
-          <h2 className="text-2xl font-bold mb-6">Available Exercises</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <section>
+          <h2 className="text-2xl font-bold mb-8">Available Exercises</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {exercises.map((exercise) => (
               <ExerciseCard key={exercise.id} exercise={exercise} />
             ))}

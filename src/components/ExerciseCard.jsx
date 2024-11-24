@@ -4,9 +4,9 @@ import { Button } from "@/components/ui/button";
 import { Globe, Lock, Database } from "lucide-react";
 
 const difficultyColors = {
-  easy: "bg-green-500",
-  medium: "bg-yellow-500",
-  hard: "bg-red-500"
+  easy: "bg-green-500/20 text-green-500",
+  medium: "bg-yellow-500/20 text-yellow-500",
+  hard: "bg-red-500/20 text-red-500"
 };
 
 const categoryIcons = {
@@ -19,28 +19,35 @@ const ExerciseCard = ({ exercise }) => {
   const Icon = categoryIcons[exercise.category] || Globe;
   
   return (
-    <Card className="w-full transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-secondary/20 bg-accent">
+    <Card className="border-secondary/10 bg-accent/50 backdrop-blur-sm">
       <CardHeader>
         <div className="flex items-center justify-between">
-          <Icon className="w-6 h-6 text-secondary" />
-          <Badge className={`${difficultyColors[exercise.difficulty]} text-white`}>
+          <Icon className="w-5 h-5 text-secondary/80" />
+          <Badge className={`${difficultyColors[exercise.difficulty]}`}>
             {exercise.difficulty}
           </Badge>
         </div>
-        <CardTitle className="mt-4">{exercise.title}</CardTitle>
+        <CardTitle className="mt-4 text-xl">{exercise.title}</CardTitle>
         <CardDescription className="text-gray-400">{exercise.description}</CardDescription>
       </CardHeader>
       <CardContent>
-        <div className="flex gap-2">
+        <div className="flex flex-wrap gap-2">
           {exercise.tags.map((tag) => (
-            <Badge key={tag} variant="outline" className="text-secondary border-secondary">
+            <Badge 
+              key={tag} 
+              variant="outline" 
+              className="text-secondary/80 border-secondary/20"
+            >
               {tag}
             </Badge>
           ))}
         </div>
       </CardContent>
       <CardFooter>
-        <Button className="w-full bg-secondary text-primary hover:bg-secondary/80">
+        <Button 
+          className="w-full bg-secondary/10 text-secondary hover:bg-secondary/20 border border-secondary/20"
+          variant="outline"
+        >
           Start Challenge
         </Button>
       </CardFooter>
