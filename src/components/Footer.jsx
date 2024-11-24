@@ -15,7 +15,7 @@ const Footer = () => {
           <div className="flex space-x-4 mt-4 md:mt-0">
             {/* GitHub */}
             <a
-              href="https://github.com/your-github-username"
+              href="https://github.com/lyfe691"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="GitHub"
@@ -26,7 +26,7 @@ const Footer = () => {
 
             {/* Website */}
             <a
-              href="https://your-website.com"
+              href="https://ysz.life"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Website"
@@ -37,7 +37,7 @@ const Footer = () => {
 
             {/* LinkedIn */}
             <a
-              href="https://www.linkedin.com/in/your-linkedin-username"
+              href="https://www.linkedin.com/in/yanis-sebastian-zuercher"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="LinkedIn"
