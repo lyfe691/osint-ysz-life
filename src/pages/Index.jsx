@@ -1,39 +1,12 @@
 import { useState } from "react";
 import ExerciseCard from "@/components/ExerciseCard";
 import Navigation from "@/components/Navigation";
-
-const SAMPLE_EXERCISES = [
-  {
-    id: 1,
-    title: "Social Media Sleuth",
-    description: "Track down information about a fictional person using only their social media presence.",
-    difficulty: "easy",
-    category: "Social Media",
-    tags: ["social", "basic"],
-    points: 100
-  },
-  {
-    id: 2,
-    title: "Digital Footprint Analysis",
-    description: "Analyze and map out the digital footprint of a given target.",
-    difficulty: "medium",
-    category: "Security",
-    tags: ["security", "footprint"],
-    points: 200
-  },
-  {
-    id: 3,
-    title: "Data Mining Challenge",
-    description: "Extract and analyze patterns from a large dataset to find hidden connections.",
-    difficulty: "hard",
-    category: "Data Analysis",
-    tags: ["data", "advanced"],
-    points: 300
-  }
-];
+import { exercises } from "@/data/exercises";
+import ExerciseViewer from "@/components/ExerciseViewer";
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 
 const Index = () => {
-  const [exercises] = useState(SAMPLE_EXERCISES);
+  const [selectedExercise, setSelectedExercise] = useState(null);
 
   return (
     <div className="min-h-screen bg-primary">
@@ -48,7 +21,16 @@ const Index = () => {
           <h2 className="text-2xl font-bold mb-8">Available Exercises</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {exercises.map((exercise) => (
-              <ExerciseCard key={exercise.id} exercise={exercise} />
+              <Dialog key={exercise.id}>
+                <DialogTrigger asChild>
+                  <div onClick={() => setSelectedExercise(exercise)} className="cursor-pointer">
+                    <ExerciseCard exercise={exercise} />
+                  </div>
+                </DialogTrigger>
+                <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto bg-primary">
+                  <ExerciseViewer exercise={exercise} />
+                </DialogContent>
+              </Dialog>
             ))}
           </div>
         </section>
