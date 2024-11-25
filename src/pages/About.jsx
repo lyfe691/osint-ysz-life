@@ -1,4 +1,3 @@
-// components/About.js
 import Navigation from "@/components/Navigation";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { motion } from "framer-motion";
@@ -43,7 +42,7 @@ const About = () => {
             About The Project
           </h1>
           <p className="mt-2 md:mt-4 text-lg md:text-xl text-gray-300 drop-shadow-md">
-            A Passion Project by a Yanis Sebastian Zürcher
+            A Passion Project by Yanis Sebastian Zürcher
           </p>
         </div>
       </div>
