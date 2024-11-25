@@ -17,7 +17,7 @@ const Index = () => {
           <p className="text-xl text-gray-400">Master the art of Open Source Intelligence</p>
         </header>
 
-        <section>
+        <section className="mb-8">
           <h2 className="text-2xl font-bold mb-8">Available Exercises</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {exercises.map((exercise) => (

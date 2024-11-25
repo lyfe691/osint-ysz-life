@@ -12,17 +12,14 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <BrowserRouter>
-        {/* Flex container to structure layout */}
         <div className="flex flex-col min-h-screen">
-          {/* Main content area */}
-          <main className="flex-grow">
+          <main className="flex-grow pb-8">
             <Routes>
               {navItems.map(({ to, page }) => (
                 <Route key={to} path={to} element={page} />
               ))}
             </Routes>
           </main>
-          {/* Footer */}
           <Footer />
         </div>
       </BrowserRouter>

@@ -3,7 +3,7 @@ import { Github, Linkedin, Globe } from "lucide-react";
 
 const Footer = () => {
   return (
-    <footer className="bg-accent border-t border-secondary/20 fixed bottom-0 w-full ">
+    <footer className="bg-accent border-t border-secondary/20 mt-auto">
       <div className="container mx-auto px-4 py-6">
         <div className="flex flex-col md:flex-row items-center justify-between">
           {/* Left Section: Copyright */}
