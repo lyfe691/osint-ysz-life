@@ -29,8 +29,9 @@ export default {
           DEFAULT: "#121212",
           foreground: "#FFFFFF",
         },
+        // Adjusted secondary color to a less bright shade
         secondary: {
-          DEFAULT: "#64FFDA",
+          DEFAULT: "#3FBFAE", // Changed from #64FFDA to a more subdued teal
           foreground: "#121212",
         },
         accent: {

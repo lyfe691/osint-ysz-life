@@ -1,65 +1,107 @@
+// components/About.js
 import Navigation from "@/components/Navigation";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { motion } from "framer-motion";
+import { FaLightbulb, FaChartLine, FaTools } from "react-icons/fa";
 
 const About = () => {
   const features = [
     {
-      title: "Open Source Intelligence Training",
-      description: "Learn essential OSINT techniques through hands-on exercises and real-world scenarios.",
+      icon: <FaLightbulb className="text-teal-400 w-8 h-8 mb-4" />,
+      title: "OSINT Training",
+      description:
+        "Dive into Open Source Intelligence techniques with hands-on exercises and real-world examples.",
     },
     {
-      title: "Progressive Learning",
-      description: "Start with beginner-friendly challenges and progress to advanced investigations.",
+      icon: <FaChartLine className="text-teal-400 w-8 h-8 mb-4" />,
+      title: "Step-by-Step Learning",
+      description:
+        "Start with the basics and gradually take on more complex investigations as you grow.",
     },
     {
+      icon: <FaTools className="text-teal-400 w-8 h-8 mb-4" />,
       title: "Practical Skills",
-      description: "Develop skills that are valuable for cybersecurity, investigation, and research.",
+      description:
+        "Build skills that are useful for cybersecurity, research, and personal projects.",
     },
   ];
 
   return (
-    <div className="min-h-screen bg-primary">
+    <div className="min-h-screen bg-gradient-to-r from-gray-800 to-gray-900 dark:bg-gray-900 transition-colors duration-500">
       <Navigation />
-      <div className="container py-12 px-4">
+
+      {/* Hero Section */}
+      <div className="relative h-64 md:h-96">
+        <img
+          src="/hero_about.jpg"
+          alt="OSINT Training"
+          className="w-full h-full object-cover opacity-70 rounded-b-lg"
+          loading="lazy"
+        />
+        <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
+          <h1 className="text-4xl md:text-5xl font-bold text-white drop-shadow-lg">
+            About Me
+          </h1>
+          <p className="mt-2 md:mt-4 text-lg md:text-xl text-gray-300 drop-shadow-md">
+            A Passion Project by a Young Developer
+          </p>
+        </div>
+      </div>
+
+      {/* Main Content */}
+      <div className="container mx-auto py-16 px-4">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="max-w-4xl mx-auto"
+          transition={{ duration: 0.6 }}
+          className="max-w-5xl mx-auto"
         >
-          <h1 className="text-4xl font-bold mb-8 text-center text-secondary">About OSINT Training</h1>
-          
-          <Card className="mb-12 bg-accent border-secondary/20">
-            <CardHeader>
-              <CardTitle className="text-2xl text-secondary">Creator</CardTitle>
+          {/* Creator Section */}
+          <Card className="mb-16 bg-gray-800 text-white shadow-lg rounded-lg">
+            <CardHeader className="border-b border-gray-700">
+              <CardTitle className="text-2xl text-teal-400 font-semibold">
+                About Me
+              </CardTitle>
             </CardHeader>
-            <CardContent>
-              <p className="text-lg mb-4">
-                Created by <span className="text-secondary font-semibold">Yanis Sebastian Zürcher</span>
-              </p>
-              <p className="text-gray-400">
-                This platform is designed to provide a comprehensive learning experience in Open Source Intelligence (OSINT),
-                helping individuals develop crucial investigative skills in the digital age.
+            <CardContent className="p-6">
+              <div className="flex items-center mb-4">
+                <img
+                  src="/profile.png"
+                  alt="Your Name"
+                  width={80}
+                  height={80}
+                  className="rounded-full border-2 border-teal-400"
+                />
+                <div className="ml-4">
+                  <h2 className="text-xl font-bold text-teal-400">
+                    Yanis Sebasitan Zürcher
+                  </h2>
+                  <p className="text-gray-400">Aspiring Developer & OSINT Enthusiast</p>
+                </div>
+              </div>
+              <p className="text-gray-300">
+                Hey there! I'm a 16-year-old developer who loves exploring the world of Open Source Intelligence. I put this platform together in my free time to share what I've learned and help others get started with OSINT. Whether you're just curious or looking to dive deep, I'm excited to have you here! If you have any inquiries or questions feel free to reach out via the <a href="/contact">contact form</a>.
               </p>
             </CardContent>
           </Card>
 
-          <div className="grid md:grid-cols-3 gap-6 mb-12">
+          {/* Features Section */}
+          <div className="grid md:grid-cols-3 gap-8 mb-16">
             {features.map((feature, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                whileHover={{ scale: 1.02 }}
-                className="hover-card"
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.2 }}
+                whileHover={{ scale: 1.05, boxShadow: "0px 10px 20px rgba(0,0,0,0.2)" }}
+                className="cursor-pointer"
               >
-                <Card className="h-full bg-accent border-secondary/20">
-                  <CardHeader>
-                    <CardTitle className="text-xl text-secondary">{feature.title}</CardTitle>
-                  </CardHeader>
-                  <CardContent>
+                <Card className="h-full bg-gray-800 text-white shadow-md rounded-lg transition-transform transition-colors duration-500">
+                  <CardContent className="p-6 text-center">
+                    {feature.icon}
+                    <CardTitle className="text-xl text-teal-400 mb-2">
+                      {feature.title}
+                    </CardTitle>
                     <p className="text-gray-400">{feature.description}</p>
                   </CardContent>
                 </Card>
@@ -67,16 +109,16 @@ const About = () => {
             ))}
           </div>
 
-          <Card className="bg-accent border-secondary/20">
-            <CardHeader>
-              <CardTitle className="text-2xl text-secondary">Our Mission</CardTitle>
+          {/* Mission Section */}
+          <Card className="bg-gray-800 text-white shadow-lg rounded-lg">
+            <CardHeader className="border-b border-gray-700">
+              <CardTitle className="text-2xl text-teal-400 font-semibold">
+                What This Is
+              </CardTitle>
             </CardHeader>
-            <CardContent>
-              <p className="text-gray-400 leading-relaxed">
-                We are committed to providing high-quality OSINT training through practical exercises
-                and real-world scenarios. Our platform is designed to help both beginners and
-                experienced practitioners enhance their investigative skills in a structured and
-                engaging environment.
+            <CardContent className="p-6">
+              <p className="text-gray-300 leading-relaxed">
+                This platform is a hobby project I've been working on to learn more about Open Source Intelligence. It's a place where I share tutorials, tools, and tips that I've found useful. I'm passionate about cybersecurity and research, and I hope this site can help others who share the same interests. Thanks for stopping by!
               </p>
             </CardContent>
           </Card>
