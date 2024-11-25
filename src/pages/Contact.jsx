@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Navigation from "@/components/Navigation";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -5,9 +6,37 @@ import { Textarea } from "@/components/ui/textarea";
 import { toast } from "sonner";
 
 const Contact = () => {
-  const handleSubmit = (e) => {
+  const [loading, setLoading] = useState(false);
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    toast.success("Message sent successfully!");
+    setLoading(true);
+
+    const form = e.target;
+    const data = new FormData(form);
+
+    try {
+      const response = await fetch("https://formspree.io/f/mwpknyor", {
+        method: "POST",
+        body: data,
+        headers: {
+          Accept: "application/json",
+        },
+      });
+
+      setLoading(false);
+
+      if (response.ok) {
+        toast.success("Message sent successfully!");
+        form.reset();
+      } else {
+        const errorData = await response.json();
+        toast.error(errorData.error || "Failed to send message.");
+      }
+    } catch (error) {
+      setLoading(false);
+      toast.error("An unexpected error occurred.");
+    }
   };
 
   return (
@@ -27,6 +56,8 @@ const Contact = () => {
               </label>
               <Input
                 id="name"
+                name="name"
+                required
                 placeholder="Your name"
                 className="bg-accent/50 border-secondary/10"
               />
@@ -37,7 +68,9 @@ const Contact = () => {
               </label>
               <Input
                 id="email"
+                name="email"
                 type="email"
+                required
                 placeholder="your@email.com"
                 className="bg-accent/50 border-secondary/10"
               />
@@ -48,16 +81,19 @@ const Contact = () => {
               </label>
               <Textarea
                 id="message"
+                name="message"
+                required
                 placeholder="Your message..."
                 className="bg-accent/50 border-secondary/10 min-h-[150px]"
               />
             </div>
             <Button
               type="submit"
+              disabled={loading}
               className="w-full bg-secondary/10 text-secondary hover:bg-secondary/20 border border-secondary/20"
               variant="outline"
             >
-              Send Message
+              {loading ? "Sending..." : "Send Message"}
             </Button>
           </form>
         </div>
