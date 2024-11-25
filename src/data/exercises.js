@@ -1,11 +1,12 @@
 // data/exercises.js
 
 export const exercises = [
+ /*
   {
     id: 1,
-    title: "Social Media Footprint Analysis",
+    title: "Placeholder",
     description: "Learn how to analyze and track digital footprints through social media platforms.",
-    difficulty: "easy",
+    difficulty: "easy", 
     category: "Social Media",
     tags: ["social", "basic", "footprint"],
     sections: {
@@ -60,6 +61,59 @@ export const exercises = [
     media: {
       type: "video", // 'image' or 'video'
       url: "/videos/exercises/001/s.mkv", 
+    },
+  },*/
+
+  {
+    id: 1,
+    title: "Image Analysis",
+    description: "Learn how to analyze images and track them down using tools.",
+    difficulty: "easy", 
+    category: "Image Search",
+    tags: ["maps", "image search"],
+    sections: {
+      background: `In this exercise you'll learn how to gather information from images and put them to use.`,
+      tasks: [
+        {
+          id: 1,
+          description: "Find the coordinates of where this image was taken. ",
+        },
+        {
+          id: 2,
+          description: "If possible provide a different angle from where the image was taken.",
+        },
+
+      ],
+      hints: [
+        {
+          id: 1,
+          text: "Use tools like google image search or image to text wesbites. It helps if you dont overthink and just do the obvious.",
+        },
+        {
+          id: 2,
+          text: "Use google maps to get the coordinates. If you found other tools that did so for you thats good too.",
+        },
+        {
+          id: 3, 
+          text: "Use google earth pro to get the other angle. Its linked below."
+        }
+      ],
+      resources: [
+        {
+          title: "OSINT Framework",
+          url: "https://osintframework.com/",
+          description: "Comprehensive collection of OSINT tools and resources.",
+        },
+        {
+          title: "Google Earth Pro",
+          url: " https://www.google.com/earth/about/versions/#earth-pro",
+          description: "Adnvanced google earth.",
+        }
+      ],
+    },
+    media: {
+      type: "image", // 'image' or 'video'
+      url: "/images/exercises/002/002.png", 
     },
   }
 ];

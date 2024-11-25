@@ -1,7 +1,7 @@
 import { Badge } from "@/components/ui/badge";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Globe, Lock, Database } from "lucide-react";
+import { Globe, Lock, Database, Image as ImageIcon } from "lucide-react";
 
 const difficultyColors = {
   easy: "bg-green-500/20 text-green-500",
@@ -12,12 +12,13 @@ const difficultyColors = {
 const categoryIcons = {
   "Social Media": Globe,
   "Security": Lock,
-  "Data Analysis": Database
+  "Data Analysis": Database,
+  "Image Search": ImageIcon
 };
 
 const ExerciseCard = ({ exercise }) => {
   const Icon = categoryIcons[exercise.category] || Globe;
-  
+
   return (
     <Card className="border-secondary/10 bg-accent/50 backdrop-blur-sm">
       <CardHeader>

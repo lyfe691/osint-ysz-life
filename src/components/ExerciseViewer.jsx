@@ -156,7 +156,7 @@ const ExerciseViewer = ({ exercise }) => {
               </>
             )}
             <p className="text-sm text-gray-400 mt-2">
-              Note: This is an image/video I didn't take to avoid copyright issues.
+              <em>Note:  I did not take this photo nor do I own the rights of it.</em>
             </p>
           </CardContent>
         </Card>
