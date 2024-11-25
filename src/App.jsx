@@ -13,7 +13,7 @@ const App = () => (
       <Toaster />
       <BrowserRouter>
         <div className="flex flex-col min-h-screen">
-          <main className="flex-grow pb-8">
+          <main className="flex-grow">
             <Routes>
               {navItems.map(({ to, page }) => (
                 <Route key={to} path={to} element={page} />
