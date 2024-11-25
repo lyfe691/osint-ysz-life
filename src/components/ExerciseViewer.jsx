@@ -1,3 +1,5 @@
+// components/ExerciseViewer.jsx
+
 import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -66,55 +68,6 @@ const ExerciseViewer = ({ exercise }) => {
         </CardContent>
       </Card>
 
-      {/* Objectives Section */}
-      <Card className="border-secondary/20 bg-gray-800 shadow-lg rounded-lg">
-        <CardHeader>
-          <CardTitle className="text-2xl font-semibold text-secondary mb-3">
-            Objectives
-          </CardTitle>
-        </CardHeader>
-        <CardContent>
-          <ul className="list-disc list-inside space-y-2 text-gray-300">
-            {exercise.sections.objectives.map((objective, index) => (
-              <li key={index} className="ml-4">
-                {objective}
-              </li>
-            ))}
-          </ul>
-        </CardContent>
-      </Card>
-
-      {/* Tools Section */}
-      <Card className="border-secondary/20 bg-gray-800 shadow-lg rounded-lg">
-        <CardHeader>
-          <CardTitle className="text-2xl font-semibold text-secondary mb-3">
-            Recommended Tools
-          </CardTitle>
-        </CardHeader>
-        <CardContent>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {exercise.sections.tools.map((tool, index) => (
-              <motion.div
-                key={index}
-                className="p-5 rounded-lg bg-gray-700 hover:bg-gray-600 transition-colors duration-300"
-                whileHover={{ scale: 1.02 }}
-              >
-                <h4 className="font-bold text-indigo-400 mb-2">{tool.name}</h4>
-                <p className="text-gray-300 mb-4">{tool.description}</p>
-                <a
-                  href={tool.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center text-indigo-400 hover:underline"
-                >
-                  Learn More <span className="ml-1">&rarr;</span>
-                </a>
-              </motion.div>
-            ))}
-          </div>
-        </CardContent>
-      </Card>
-
       {/* Tasks Section */}
       <Card className="border-secondary/20 bg-gray-800 shadow-lg rounded-lg">
         <CardHeader>
@@ -125,19 +78,89 @@ const ExerciseViewer = ({ exercise }) => {
         <CardContent>
           <div className="space-y-4">
             {exercise.sections.tasks.map((task) => (
-              <div
+              <motion.div
                 key={task.id}
-                className="flex items-center justify-between p-4 rounded-lg bg-gray-700 hover:bg-gray-600 transition-colors duration-300"
+                className="p-4 rounded-lg bg-gray-700 hover:bg-gray-600 transition-colors duration-300"
+                whileHover={{ scale: 1.01 }}
               >
                 <span className="text-gray-300">{task.description}</span>
-                <Badge variant="outline" className="text-indigo-400 border-indigo-400">
-                  {task.points} Points
-                </Badge>
-              </div>
+              </motion.div>
             ))}
           </div>
         </CardContent>
       </Card>
+
+      {/* Media Section */}
+      {exercise.media && (
+        <Card className="border-secondary/20 bg-gray-800 shadow-lg rounded-lg">
+          <CardHeader>
+            <CardTitle className="text-2xl font-semibold text-secondary mb-3">
+              {exercise.media.type === "image" ? "Image" : "Video"}
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            {exercise.media.type === "image" ? (
+              <>
+                <img
+                  src={exercise.media.url}
+                  alt={exercise.title}
+                  className="w-full h-auto rounded-lg"
+                />
+                <p className="mt-2">
+                  <a
+                    href={exercise.media.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-indigo-400 hover:underline mr-4"
+                  >
+                    Open Image in New Tab
+                  </a>
+                  <a
+                    href={exercise.media.url}
+                    download
+                    className="text-indigo-400 hover:underline"
+                  >
+                    Download Image
+                  </a>
+                </p>
+              </>
+            ) : (
+              <>
+                <div className="relative" style={{ paddingTop: "56.25%" }}>
+                  <iframe
+                    src={exercise.media.url}
+                    title={exercise.title}
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                    className="absolute top-0 left-0 w-full h-full rounded-lg"
+                  ></iframe>
+                </div>
+                <p className="mt-2">
+                  <a
+                    href={exercise.media.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-indigo-400 hover:underline mr-4"
+                  >
+                    Open Video in New Tab
+                  </a>
+                  <a
+                    href={exercise.media.url}
+                    download
+                    className="text-indigo-400 hover:underline"
+                  >
+                    Download Video
+                  </a>
+                </p>
+              </>
+            )}
+            <p className="text-sm text-gray-400 mt-2">
+              Note: This is an image/video I didn't take to avoid copyright issues.
+            </p>
+          </CardContent>
+        </Card>
+      )}
 
       {/* Hints Section */}
       <Card className="border-secondary/20 bg-gray-800 shadow-lg rounded-lg">
@@ -212,8 +235,6 @@ const ExerciseViewer = ({ exercise }) => {
           </div>
         </CardContent>
       </Card>
-
-  
     </div>
   );
 };
