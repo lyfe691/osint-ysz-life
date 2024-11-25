@@ -40,10 +40,10 @@ const About = () => {
         />
         <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
           <h1 className="text-4xl md:text-5xl font-bold text-white drop-shadow-lg">
-            About Me
+            About The Project
           </h1>
           <p className="mt-2 md:mt-4 text-lg md:text-xl text-gray-300 drop-shadow-md">
-            A Passion Project by a Young Developer
+            A Passion Project by a Yanis Sebastian Zürcher
           </p>
         </div>
       </div>
@@ -80,7 +80,7 @@ const About = () => {
                 </div>
               </div>
               <p className="text-gray-300">
-                Hey there! I'm a 16-year-old developer who loves exploring the world of Open Source Intelligence. I put this platform together in my free time to share what I've learned and help others get started with OSINT. Whether you're just curious or looking to dive deep, I'm excited to have you here! If you have any inquiries or questions feel free to reach out via the <a href="/contact">contact form</a>.
+                Hey there! I'm a 16-year-old developer who has just recently dove into the world of Open Source Intelligence. I put this platform together in my free time to share what I've learned and help others get started with OSINT. Whether you're just curious or looking to dive deep, I'm excited to have you here! If you have any inquiries or questions feel free to reach out via the <em className="text-blue-500"><a href="/contact">contact form</a>.</em>
               </p>
             </CardContent>
           </Card>
