@@ -4,9 +4,9 @@ import Navigation from "@/components/Navigation";
 
 const NotFound = () => {
   return (
-    <div className="min-h-screen bg-primary">
+    <div className="flex flex-col flex-grow">
       <Navigation />
-      <div className="container mx-auto px-4 py-16 flex flex-col items-center justify-center text-center">
+      <div className="container mx-auto px-4 flex-grow flex flex-col items-center justify-center text-center">
         <div className="space-y-6 max-w-2xl">
           <h1 className="text-6xl md:text-8xl font-bold text-teal-400">404</h1>
           <h2 className="text-2xl md:text-3xl font-semibold">Target Not Found</h2>

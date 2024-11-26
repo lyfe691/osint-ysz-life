@@ -14,7 +14,7 @@ const App = () => (
       <Toaster />
       <HashRouter>
         <div className="flex flex-col min-h-screen">
-          <main className="flex-grow">
+          <main className="flex-grow flex flex-col">
             <Routes>
               {navItems.map(({ to, page }) => (
                 <Route key={to} path={to} element={page} />

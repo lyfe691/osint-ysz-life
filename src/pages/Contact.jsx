@@ -40,15 +40,15 @@ const Contact = () => {
   };
 
   return (
-    <div className="min-h-screen bg-primary">
+    <div className="flex flex-col flex-grow">
       <Navigation />
-      <div className="container py-12">
+      <div className="container py-12 flex-grow flex flex-col justify-center">
         <header className="text-center mb-16">
           <h1 className="text-4xl font-bold mb-4">Contact Me</h1>
           <p className="text-xl text-gray-400">Get in touch with me</p>
         </header>
 
-        <div className="max-w-md mx-auto">
+        <div className="max-w-md mx-auto w-full">
           <form onSubmit={handleSubmit} className="space-y-6">
             <div>
               <label htmlFor="name" className="block text-sm font-medium mb-2">
