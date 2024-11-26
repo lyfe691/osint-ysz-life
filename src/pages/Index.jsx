@@ -26,9 +26,9 @@ const Index = () => {
   );
 
   return (
-    <div className="min-h-screen bg-primary">
+    <div className="flex flex-col flex-grow">
       <Navigation />
-      <div className="container py-12">
+      <div className="container py-12 flex-grow flex flex-col">
         <header className="text-center mb-16">
           <h1 className="text-4xl font-bold mb-4">OSINT Excercises</h1>
           <p className="text-xl text-gray-400">These are some excersises I put together for you completely for free!</p>
