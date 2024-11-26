@@ -87,7 +87,7 @@ export const exercises = [
       hints: [
         {
           id: 1,
-          text: "Use tools like google image search or image to text wesbites. It helps if you dont overthink and just do the obvious.",
+          text: "Just simply take hints from the picture and google them! You can also use image search like google image search but its not necessary.",
         },
         {
           id: 2,
