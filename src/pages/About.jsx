@@ -2,6 +2,7 @@ import Navigation from "@/components/Navigation";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { motion } from "framer-motion";
 import { FaLightbulb, FaChartLine, FaTools } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const About = () => {
   const features = [
@@ -79,7 +80,7 @@ const About = () => {
                 </div>
               </div>
               <p className="text-gray-300">
-                Hey there! I'm a 16-year-old developer who has just recently dove into the world of Open Source Intelligence. I put this platform together in my free time to share what I've learned and help others get started with OSINT. Whether you're just curious or looking to dive deep, I'm excited to have you here! If you have any inquiries or questions feel free to reach out via the <em className="text-blue-500"><a href="/contact">contact form</a>.</em>
+                Hey there! I'm a 16-year-old developer who has just recently dove into the world of Open Source Intelligence. I put this platform together in my free time to share what I've learned and help others get started with OSINT. Whether you're just curious or looking to dive deep, I'm excited to have you here! If you have any inquiries or questions feel free to reach out via the <Link to="/contact" className="text-blue-500">contact form</Link>.
               </p>
             </CardContent>
           </Card>
