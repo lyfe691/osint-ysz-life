@@ -76,7 +76,7 @@ const About = () => {
                   <h2 className="text-xl font-bold text-teal-400">
                     Yanis Sebasitan Zürcher
                   </h2>
-                  <p className="text-gray-400">Aspiring Developer & OSINT Enthusiast</p>
+                  <p className="text-gray-400">Computer Science Student</p>
                 </div>
               </div>
               <p className="text-gray-300">
@@ -118,7 +118,12 @@ const About = () => {
             </CardHeader>
             <CardContent className="p-6">
               <p className="text-gray-300 leading-relaxed">
-                This platform is a hobby project I've been working on to learn more about Open Source Intelligence. It's a place where I share tutorials, tools, and tips that I've found useful. I'm passionate about cybersecurity and research, and I hope this site can help others who share the same interests. Thanks for stopping by!
+                This platform is a hobby project I've been working on to learn more about Open Source Intelligence. It's a place where I share exercises and tips that I've found useful. I'm new but passionate about cybersecurity and research, and I hope this site can help others who share the same interests. Thanks for stopping by!
+
+                <br />
+                <br />
+
+                This project was inspired by this website: <Link to="https://gralhix.com/list-of-osint-exercises/" className="text-blue-500" target="_blank">https://gralhix.com/list-of-osint-exercises/</Link>
               </p>
             </CardContent>
           </Card>
