@@ -6,9 +6,9 @@ import { Globe, Lock, Database, Image as ImageIcon } from "lucide-react";
 const difficultyColors = {
   easy: "bg-green-500/20 text-green-500",
   medium: "bg-yellow-500/20 text-yellow-500",
-  hard: "bg-red-500/20 text-red-500"
+  hard: "bg-red-500/20 text-red-500",
+  expert: "bg-red-700/20 text-red-700", 
 };
-
 const categoryIcons = {
   "Social Media": Globe,
   "Security": Lock,

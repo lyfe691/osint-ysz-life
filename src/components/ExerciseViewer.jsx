@@ -1,14 +1,27 @@
 // components/ExerciseViewer.jsx
 
 import { useState } from "react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { motion } from "framer-motion";
-import { Lock } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Lock, Unlock, ExternalLink, Download } from "lucide-react";
+import ReactPlayer from "react-player"; // react player for unblurrynes
+
+const difficultyColors = {
+  easy: "bg-green-500/20 text-green-500",
+  medium: "bg-yellow-500/20 text-yellow-500",
+  hard: "bg-red-500/20 text-red-500",
+  expert: "bg-red-700/20 text-red-700", 
+};
 
 const ExerciseViewer = ({ exercise }) => {
   const [showHint, setShowHint] = useState({});
+  const [showResult, setShowResult] = useState(false);
 
   const toggleHint = (hintId) => {
     setShowHint((prev) => ({
@@ -17,18 +30,12 @@ const ExerciseViewer = ({ exercise }) => {
     }));
   };
 
-  // Function to determine difficulty badge styles
+  const toggleResult = () => {
+    setShowResult((prev) => !prev);
+  };
+
   const getDifficultyStyles = (difficulty) => {
-    switch (difficulty) {
-      case "easy":
-        return "bg-green-600/20 text-green-600";
-      case "medium":
-        return "bg-yellow-500/20 text-yellow-500";
-      case "hard":
-        return "bg-red-600/20 text-red-600";
-      default:
-        return "bg-gray-500/20 text-gray-500";
-    }
+    return difficultyColors[difficulty] || "bg-gray-500/20 text-gray-500";
   };
 
   return (
@@ -78,13 +85,12 @@ const ExerciseViewer = ({ exercise }) => {
         <CardContent>
           <div className="space-y-4">
             {exercise.sections.tasks.map((task) => (
-              <motion.div
+              <Card
                 key={task.id}
-                className="p-4 rounded-lg bg-gray-700 hover:bg-gray-600 transition-colors duration-300"
-                whileHover={{ scale: 1.01 }}
+                className="p-4 rounded-lg bg-gray-700"
               >
                 <span className="text-gray-300">{task.description}</span>
-              </motion.div>
+              </Card>
             ))}
           </div>
         </CardContent>
@@ -103,60 +109,70 @@ const ExerciseViewer = ({ exercise }) => {
               <>
                 <img
                   src={exercise.media.url}
-                  alt={exercise.title}
+                  alt={`${exercise.title} Image`}
                   className="w-full h-auto rounded-lg"
+                  loading="lazy"
+                  onError={(e) => {
+                    e.target.onerror = null;
+                    e.target.src = "/images/default.png"; // Fallback image
+                  }}
                 />
-                <p className="mt-2">
+                <div className="mt-4 flex space-x-4">
                   <a
                     href={exercise.media.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-indigo-400 hover:underline mr-4"
+                    className="flex items-center text-indigo-400 hover:text-indigo-500"
                   >
+                    <ExternalLink className="h-4 w-4 mr-2" />
                     Open Image in New Tab
                   </a>
                   <a
                     href={exercise.media.url}
                     download
-                    className="text-indigo-400 hover:underline"
+                    className="flex items-center text-indigo-400 hover:text-indigo-500"
                   >
+                    <Download className="h-4 w-4 mr-2" />
                     Download Image
                   </a>
-                </p>
+                </div>
               </>
             ) : (
               <>
-                <div className="relative" style={{ paddingTop: "56.25%" }}>
-                  <iframe
-                    src={exercise.media.url}
-                    title={exercise.title}
-                    frameBorder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                    className="absolute top-0 left-0 w-full h-full rounded-lg"
-                  ></iframe>
+                <div className="mt-4">
+                  <ReactPlayer
+                    url={exercise.media.url}
+                    controls
+                    width="100%"
+                    height="100%"
+                    className="rounded-lg"
+                  />
                 </div>
-                <p className="mt-2">
+                <div className="mt-4 flex space-x-4">
                   <a
                     href={exercise.media.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-indigo-400 hover:underline mr-4"
+                    className="flex items-center text-indigo-400 hover:text-indigo-500"
                   >
+                    <ExternalLink className="h-4 w-4 mr-2" />
                     Open Video in New Tab
                   </a>
                   <a
                     href={exercise.media.url}
                     download
-                    className="text-indigo-400 hover:underline"
+                    className="flex items-center text-indigo-400 hover:text-indigo-500"
                   >
+                    <Download className="h-4 w-4 mr-2" />
                     Download Video
                   </a>
-                </p>
+                </div>
               </>
             )}
-            <p className="text-sm text-gray-400 mt-2">
-              <em>Note:  I did not take this photo nor do I own the rights of it.</em>
+            <p className="text-sm text-gray-400 mt-4">
+              <em>
+                Note: I did not take this photo nor do I own the rights to it.
+              </em>
             </p>
           </CardContent>
         </Card>
@@ -172,34 +188,41 @@ const ExerciseViewer = ({ exercise }) => {
         <CardContent>
           <div className="space-y-4">
             {exercise.sections.hints.map((hint) => (
-              <motion.div
-                key={hint.id}
-                className="p-4 rounded-lg bg-gray-700 hover:bg-gray-600 transition-colors duration-300"
-                whileHover={{ scale: 1.01 }}
-              >
+              <Card key={hint.id} className="p-4 rounded-lg bg-gray-700">
                 <div className="flex justify-between items-center">
                   <span className="text-gray-300">Hint #{hint.id}</span>
-                  <Button
-                    variant="ghost"
-                    size="sm"
+                  <button
                     onClick={() => toggleHint(hint.id)}
-                    className="text-indigo-400 hover:bg-indigo-500/10 transition-colors duration-200 flex items-center"
+                    className="text-indigo-400 hover:text-indigo-500 flex items-center focus:outline-none"
+                    aria-label={showHint[hint.id] ? "Hide Hint" : "Reveal Hint"}
                   >
-                    <Lock className="h-4 w-4 mr-2" />
-                    {showHint[hint.id] ? "Hide" : "Reveal"}
-                  </Button>
+                    {showHint[hint.id] ? (
+                      <>
+                        <Unlock className="h-4 w-4 mr-2" />
+                        Hide
+                      </>
+                    ) : (
+                      <>
+                        <Lock className="h-4 w-4 mr-2" />
+                        Reveal
+                      </>
+                    )}
+                  </button>
                 </div>
-                {showHint[hint.id] && (
-                  <motion.p
-                    initial={{ opacity: 0, height: 0 }}
-                    animate={{ opacity: 1, height: "auto" }}
-                    transition={{ duration: 0.3 }}
-                    className="mt-2 text-gray-300"
-                  >
-                    {hint.text}
-                  </motion.p>
-                )}
-              </motion.div>
+                <AnimatePresence>
+                  {showHint[hint.id] && (
+                    <motion.p
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: "auto" }}
+                      exit={{ opacity: 0, height: 0 }}
+                      transition={{ duration: 0.3 }}
+                      className="mt-2 text-gray-300 overflow-hidden"
+                    >
+                      {hint.text}
+                    </motion.p>
+                  )}
+                </AnimatePresence>
+              </Card>
             ))}
           </div>
         </CardContent>
@@ -215,26 +238,78 @@ const ExerciseViewer = ({ exercise }) => {
         <CardContent>
           <div className="space-y-4">
             {exercise.sections.resources.map((resource, index) => (
-              <motion.div
-                key={index}
-                className="p-5 rounded-lg bg-gray-700 hover:bg-gray-600 transition-colors duration-300"
-                whileHover={{ scale: 1.02 }}
-              >
-                <h4 className="font-bold text-indigo-400 mb-2">{resource.title}</h4>
+              <Card key={index} className="p-5 rounded-lg bg-gray-700">
+                <h4 className="font-bold text-indigo-400 mb-2">
+                  {resource.title}
+                </h4>
                 <p className="text-gray-300 mb-4">{resource.description}</p>
                 <a
                   href={resource.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center text-indigo-400 hover:underline"
+                  className="inline-flex items-center text-indigo-400 hover:text-indigo-500"
                 >
                   Visit Resource <span className="ml-1">&rarr;</span>
                 </a>
-              </motion.div>
+              </Card>
             ))}
           </div>
         </CardContent>
       </Card>
+
+      {/* Result Section */}
+      {exercise.resultVideoUrl && (
+        <Card className="border-secondary/20 bg-gray-800 shadow-lg rounded-lg">
+          <CardHeader>
+            <div className="flex justify-between items-center">
+              <CardTitle className="text-2xl font-semibold text-secondary">
+                Result
+              </CardTitle>
+              <button
+                onClick={toggleResult}
+                className="text-indigo-400 hover:text-indigo-500 flex items-center focus:outline-none"
+                aria-label={showResult ? "Hide Result" : "Reveal Result"}
+              >
+                {showResult ? (
+                  <>
+                    <Unlock className="h-4 w-4 mr-2" />
+                    Hide
+                  </>
+                ) : (
+                  <>
+                    <Lock className="h-4 w-4 mr-2" />
+                    Reveal
+                  </>
+                )}
+              </button>
+            </div>
+          </CardHeader>
+          <AnimatePresence>
+            {showResult && (
+              <CardContent>
+                <div className="mt-4">
+                  <ReactPlayer
+                    url={exercise.resultVideoUrl}
+                    controls
+                    width="100%"
+                    height="100%"
+                    className="rounded-lg"
+                    onError={() => {
+                      // ill implement proper error handling later
+                      alert("Failed to load the result video.");
+                    }}
+                  />
+                </div>
+                <p className="text-sm text-gray-400 mt-4">
+                  <em>
+                    This video demonstrates the expected result of the exercise.
+                  </em>
+                </p>
+              </CardContent>
+            )}
+          </AnimatePresence>
+        </Card>
+      )}
     </div>
   );
 };
