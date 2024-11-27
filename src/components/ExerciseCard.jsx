@@ -20,18 +20,20 @@ const ExerciseCard = ({ exercise }) => {
   const Icon = categoryIcons[exercise.category] || Globe;
 
   return (
-    <Card className="border-secondary/10 bg-accent/50 backdrop-blur-sm">
-      <CardHeader>
+    <Card className="border-secondary/10 bg-accent/50 backdrop-blur-sm h-[400px] flex flex-col">
+      <CardHeader className="flex-none">
         <div className="flex items-center justify-between">
           <Icon className="w-5 h-5 text-secondary/80" />
           <Badge className={`${difficultyColors[exercise.difficulty]}`}>
             {exercise.difficulty}
           </Badge>
         </div>
-        <CardTitle className="mt-4 text-xl">{exercise.title}</CardTitle>
-        <CardDescription className="text-gray-400">{exercise.description}</CardDescription>
+        <CardTitle className="mt-4 text-xl line-clamp-2">{exercise.title}</CardTitle>
+        <CardDescription className="text-gray-400 line-clamp-3 h-[72px]">
+          {exercise.description}
+        </CardDescription>
       </CardHeader>
-      <CardContent>
+      <CardContent className="flex-grow overflow-y-auto">
         <div className="flex flex-wrap gap-2">
           {exercise.tags.map((tag) => (
             <Badge 
@@ -44,7 +46,7 @@ const ExerciseCard = ({ exercise }) => {
           ))}
         </div>
       </CardContent>
-      <CardFooter>
+      <CardFooter className="flex-none">
         <Button 
           className="w-full bg-secondary/10 text-secondary hover:bg-secondary/20 border border-secondary/20"
           variant="outline"
