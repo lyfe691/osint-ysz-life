@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import { navItems } from "@/nav-items";
 import MobileMenu from "./MobileMenu";
-import ThemeToggle from "./ThemeToggle";
 
 const Navigation = () => {
   return (
@@ -14,20 +13,17 @@ const Navigation = () => {
               OSINT Training
             </Link>
           </div>
-          <div className="flex items-center gap-4">
-            <div className="hidden md:flex space-x-8">
-              {navItems.map(({ title, to, icon }) => (
-                <Link
-                  key={to}
-                  to={to}
-                  className="flex items-center space-x-2 text-muted-foreground hover:text-secondary transition-colors"
-                >
-                  {icon}
-                  <span>{title}</span>
-                </Link>
-              ))}
-            </div>
-            <ThemeToggle />
+          <div className="hidden md:flex space-x-8">
+            {navItems.map(({ title, to, icon }) => (
+              <Link
+                key={to}
+                to={to}
+                className="flex items-center space-x-2 text-gray-300 hover:text-secondary transition-colors"
+              >
+                {icon}
+                <span>{title}</span>
+              </Link>
+            ))}
           </div>
         </div>
       </div>
