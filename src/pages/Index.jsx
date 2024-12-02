@@ -6,6 +6,7 @@ import ExerciseViewer from "@/components/ExerciseViewer";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
+import Typewriter from "typewriter-effect"; 
 
 const ITEMS_PER_PAGE = 6;
 
@@ -31,7 +32,22 @@ const Index = () => {
       <div className="container py-12 flex-grow flex flex-col">
         <header className="text-center mb-16">
           <h1 className="text-4xl font-bold mb-4">OSINT Exercises</h1>
-          <p className="text-xl text-gray-400">These are some exercises I put together for you completely for free!</p>
+          <p className="text-xl text-gray-400 mt-4">
+            <Typewriter
+              options={{
+                strings: [
+                  "Enhance Your OSINT Skills",
+                  "Explore Real-World Scenarios",
+                  "Like the content? Help keep it going with a coffee donation! (please)",
+                  "More exercises coming soon!"
+                ],
+                autoStart: true,
+                loop: true,
+                delay: 50,
+                deleteSpeed: 25,
+              }}
+            />
+          </p>
         </header>
 
         <div className="mb-8">
@@ -49,7 +65,7 @@ const Index = () => {
         </div>
 
         <section className="mb-8">
-          <h2 className="text-2xl font-bold mb-8">Available Exercises ({exercises.length}) </h2> 
+          <h2 className="text-2xl font-bold mb-8">Available Exercises ({filteredExercises.length}) </h2> { /* now filters and doesnt just show the count of all the exercises.*/ }
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {paginatedExercises.map((exercise) => (
               <Dialog key={exercise.id}>

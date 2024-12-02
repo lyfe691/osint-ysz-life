@@ -1,4 +1,8 @@
 export const exercises = [
+
+  // IMPORTANT: ALWAYS UPDATE THE ID IF CREATING A NEW EXERCISE.
+
+
   {
     id: 1,
     title: "Image Analysis #01",
