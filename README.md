@@ -66,10 +66,10 @@ Here’s the template you need to use:
     ]
   },
   "media": {
-    "type": "image", // 'image' or 'video'
+    "type": "", // 'image' or 'video'
     "url": "" // your url
   },
-  "resultVideoUrl": "" // your url
+  "resultVideoUrl": "" // your url, leave blank if you have none
 }
 ```
 ## Notes for Contributors
