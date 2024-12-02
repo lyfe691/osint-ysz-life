@@ -31,7 +31,7 @@ const Index = () => {
       <div className="container py-12 flex-grow flex flex-col">
         <header className="text-center mb-16">
           <h1 className="text-4xl font-bold mb-4">OSINT Exercises</h1>
-          <p className="text-xl text-gray-400">These are some exersises I put together for you completely for free!</p>
+          <p className="text-xl text-gray-400">These are some exercises I put together for you completely for free!</p>
         </header>
 
         <div className="mb-8">
