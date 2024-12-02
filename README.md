@@ -12,7 +12,7 @@ I’ll ensure your exercise gets reviewed, corrected (if needed), and **credited
 ---
 
 ## JSON Template 🧩  
-Here’s the template you can use:  
+Here’s the template you need to use:  
 
 ```json
 {
