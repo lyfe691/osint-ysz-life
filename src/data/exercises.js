@@ -1,7 +1,7 @@
 export const exercises = [
   {
     id: 1,
-    title: "Location Hunt: Mountain View",
+    title: "Image Analysis #01",
     description: "Learn how to analyze images and track them down using tools.",
     difficulty: "easy", 
     category: "Image Search",
@@ -46,15 +46,16 @@ export const exercises = [
       ],
     },
     media: {
-      type: "image",
+      type: "image", // 'image' or 'video'
       url: "/images/exercises/001/001.png", 
     },
+
     resultVideoUrl: "", 
   },
 
   {
     id: 2,
-    title: "Urban Investigation: Amusement Park",
+    title: "Image Analysis #02",
     description: "Learn how to analyze images and track them down using tools.",
     difficulty: "easy", 
     category: "Image Search",
@@ -103,9 +104,12 @@ export const exercises = [
       ],
     },
     media: {
-      type: "image",
+      type: "image", // 'image' or 'video'
       url: "/images/exercises/002/002.png", 
     },
+
     resultVideoUrl: "", 
   },
+
+  
 ];
