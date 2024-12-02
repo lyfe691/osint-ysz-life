@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Page Not Found</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        :root {
+            --background-color: #0a0a0a;
+            --text-color: #ffffff;
+            --button-bg: #141414;
+            --button-hover: #1e1e1e;
+            --font-family: 'Montserrat', sans-serif;
+        }
+        body {
+            font-family: var(--font-family);
+            background-color: var(--background-color);
+            color: var(--text-color);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+            padding-bottom: 60px;
+        }
+        #particles-js {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            top: 0;
+            left: 0;
+        }
+        .container {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 2rem;
+            max-width: 800px;
+            width: 90%;
+        }
+        h1 {
+            font-size: 10rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            letter-spacing: 4px;
+            color: var(--text-color);
+            line-height: 1;
+            transform: translateZ(0);
+        }
+        p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: rgba(255, 255, 255, 0.8);
+            font-weight: 400;
+            line-height: 1.5;
+            letter-spacing: 0.4px;
+        }
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0;
+            width: 200px;
+            height: 56px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-decoration: none;
+            color: var(--text-color);
+            background-color: var(--button-bg);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        .back-button span {
+            position: relative;
+            z-index: 1;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .back-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--button-hover);
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .back-button:hover {
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+        .back-button:hover::before {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+        .back-button:hover span {
+            transform: translateX(5px);
+        }
+        .back-button:active {
+            transform: scale(0.98);
+        }
+        .hover-underline {
+            color: white;
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-bottom 0.3s ease-in-out;
+        }
+
+        .hover-underline:hover {
+            border-bottom: 1px solid white;
+        }
+        .footer-text {
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.4);
+            z-index: 2;
+        }
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 8rem;
+            }
+            p {
+                font-size: 1.1rem;
+                margin-bottom: 1.8rem;
+            }
+            .back-button {
+                width: 180px;
+                height: 52px;
+                font-size: 1rem;
+            }
+        }
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 5rem;
+                margin-bottom: 0.8rem;
+            }
+            p {
+                font-size: 1rem;
+                margin-bottom: 1.5rem;
+            }
+            .back-button {
+                width: 160px;
+                height: 48px;
+                font-size: 0.95rem;
+            }
+            .container {
+                padding: 1.5rem;
+            }
+        }
+        @media (max-width: 320px) {
+            h1 {
+                font-size: 4rem;
+            }
+            p {
+                font-size: 0.95rem;
+            }
+            .back-button {
+                width: 140px;
+                height: 44px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="particles-js"></div>
+    <div class="container" role="main">
+        <h1>404</h1>
+        <p>
+            Oops! It looks like you've reached a page that doesn't exist.<br><br>
+            This website uses a <strong>HashRouter</strong> for navigation, which requires URLs to include a hash (#). 
+            For example, to visit the About page, use 
+            <a href="https://osint.ysz.life/#/about" class="hover-underline">
+                <code>https://osint.ysz.life/#/about</code>
+            </a>.
+        </p>
+        <a href="https://osint.ysz.life" class="back-button"><span>Go Back</span></a>
+    </div>
+    <div class="footer-text">
+        &copy; 2024 Yanis Sebastian Zürcher. All rights reserved.
+    </div>
+    <script>
+        if (typeof particlesJS === 'undefined') {
+            console.error('Particles.js not loaded');
+        } else {
+            particlesJS('particles-js',
+            {
+                "particles": {
+                    "number": {
+                        "value": 100,
+                        "density": {
+                            "enable": true,
+                            "value_area": 1000
+                        }
+                    },
+                    "color": {
+                        "value": "#ffffff"
+                    },
+                    "shape": {
+                        "type": "circle"
+                    },
+                    "opacity": {
+                        "value": 0.25,
+                        "anim": {
+                            "enable": false
+                        }
+                    },
+                    "size": {
+                        "value": 2,
+                        "random": true
+                    },
+                    "line_linked": {
+                        "enable": true,
+                        "distance": 150,
+                        "color": "#ffffff",
+                        "opacity": 0.15,
+                        "width": 1
+                    },
+                    "move": {
+                        "enable": true,
+                        "speed": 2,
+                        "direction": "none",
+                        "out_mode": "out",
+                        "bounce": false
+                    }
+                },
+                "interactivity": {
+                    "detect_on": "canvas",
+                    "events": {
+                        "onhover": {
+                            "enable": true,
+                            "mode": "grab"
+                        },
+                        "onclick": {
+                            "enable": true,
+                            "mode": "push"
+                        },
+                        "resize": true
+                    },
+                    "modes": {
+                        "grab": {
+                            "distance": 150,
+                            "line_linked": {
+                                "opacity": 0.3
+                            }
+                        },
+                        "push": {
+                            "particles_nb": 4
+                        }
+                    }
+                },
+                "retina_detect": true
+            });
+        }
+        document.addEventListener('DOMContentLoaded', () => {
+            const elements = document.querySelectorAll('h1, p, .back-button');
+            elements.forEach((el, index) => {
+                el.style.opacity = 0;
+                el.style.transform = 'translateY(-20px)';
+                el.style.transition = 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
+                setTimeout(() => {
+                    el.style.opacity = 1;
+                    el.style.transform = 'translateY(0)';
+                }, 300 + (index * 150));
+            });
+        });
+    </script>
+</body>
+</html>
