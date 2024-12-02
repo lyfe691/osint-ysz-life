@@ -8,6 +8,9 @@ If you want to contribute, here's how you can do it:
    - **Accepted formats:** `.json` or `.txt` (doesn’t really matter).  
 
 I’ll ensure your exercise gets reviewed, corrected (if needed), and **credited to you** — just make sure to include something in your submission for me to credit you with!  
+<hr>
+
+**SUBMIT HERE**: <a href="https://osint.ysz.life/#/contact" target="_blank">https://osint.ysz.life/#/contact</a>
 
 ---
 
