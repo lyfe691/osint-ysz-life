@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "sonner";
+import Typewriter from "typewriter-effect";
 
 
 const Contact = () => {
@@ -94,7 +95,21 @@ const Contact = () => {
       <div className="container py-12 flex-grow flex flex-col justify-center">
         <header className="text-center mb-16">
           <h1 className="text-4xl font-bold mb-4">Contact Me</h1>
-          <p className="text-xl text-gray-400">Anything on your mind? Submission? Reach out!</p>
+          <p className="text-xl text-gray-400">
+          <Typewriter
+              options={{
+                strings: [
+                  "Anything on your mind?",
+                  "Have a submission - contribution?",
+                  "Found an issue? let me know!"
+                ],
+                autoStart: true,
+                loop: true,
+                delay: 50,
+                deleteSpeed: 25,
+              }}
+            />
+          </p>
         </header>
 
         <div className="max-w-md mx-auto w-full">
