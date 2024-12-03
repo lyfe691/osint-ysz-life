@@ -3,7 +3,7 @@ import ExerciseCard from "@/components/ExerciseCard";
 import Navigation from "@/components/Navigation";
 import { exercises } from "@/data/exercises";
 import ExerciseViewer from "@/components/ExerciseViewer";
-import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
 import Typewriter from "typewriter-effect"; 
@@ -65,7 +65,7 @@ const Index = () => {
         </div>
 
         <section className="mb-8">
-          <h2 className="text-2xl font-bold mb-8">Available Exercises ({filteredExercises.length}) </h2> { /* now filters and doesnt just show the count of all the exercises.*/ }
+          <h2 className="text-2xl font-bold mb-8">Available Exercises ({filteredExercises.length})</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {paginatedExercises.map((exercise) => (
               <Dialog key={exercise.id}>
@@ -75,6 +75,7 @@ const Index = () => {
                   </div>
                 </DialogTrigger>
                 <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto bg-primary">
+                  <DialogTitle className="sr-only">Exercise Details</DialogTitle>
                   <ExerciseViewer exercise={exercise} />
                 </DialogContent>
               </Dialog>
